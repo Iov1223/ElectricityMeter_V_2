@@ -36,7 +36,22 @@
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="Background" Value="#E7E7E7"/>
+                </Trigger>
+            </Style.Triggers>
+            
+        </Style>
+        <Style TargetType="TextBox" x:Key="textBoxDayPrice" >
+            <Setter Property="Background" Value="#B5B5B5" />
+            <Setter Property="FontSize" Value="17" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="BorderThickness" Value="0.7" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="White"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -63,70 +78,80 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <!--Заголовок-->
-        <Label x:Name="labelMonths" Content="Месяц" Grid.Row="0" Grid.Column="0"/>
+        <Label x:Name="labelMonths" Grid.Row="0" Grid.Column="0"/>
         <Label x:Name="labelNight" Content="Ночь (Кол-во в кВт.ч)" Grid.Row="0" Grid.Column="1"/>
         <Label x:Name="labelDay" Content="День (Кол-во в кВт.ч)" Grid.Row="0" Grid.Column="2"/>
         <Label x:Name="labelResult" Content="Сумма в рублях" Grid.Row="0" Grid.Column="3"/>
+        <!--Тариф-->
+        <Label x:Name="labelPrice" Content="Тариф:" Grid.Row="1" Grid.Column="0" Background="#B5B5B5"/>
         <!--Месяцы-->
-        <Label x:Name="labelJanuary" Content="Январь" Grid.Row="1" Grid.Column="0"/>
-        <Label x:Name="labelFebruary" Content="Февраль" Grid.Row="2" Grid.Column="0"/>
-        <Label x:Name="labelMarch" Content="Март" Grid.Row="3" Grid.Column="0"/>
-        <Label x:Name="labelApril" Content="Апрель" Grid.Row="4" Grid.Column="0"/>
-        <Label x:Name="labelMay" Content="Май" Grid.Row="5" Grid.Column="0"/>
-        <Label x:Name="labelJune" Content="Июнь" Grid.Row="6" Grid.Column="0"/>
-        <Label x:Name="labelJuly" Content="Июль" Grid.Row="7" Grid.Column="0"/>
-        <Label x:Name="labelAugust" Content="Август" Grid.Row="8" Grid.Column="0"/>
-        <Label x:Name="labelSeptember" Content="Сентябрь" Grid.Row="9" Grid.Column="0"/>
-        <Label x:Name="labelOctober" Content="Октябрь" Grid.Row="10" Grid.Column="0"/>
-        <Label x:Name="labelNovember" Content="Ноябрь" Grid.Row="11" Grid.Column="0"/>
-        <Label x:Name="labelDecember" Content="Декабрь" Grid.Row="12" Grid.Column="0"/>
+        <Label x:Name="labelJanuary" Content="Январь" Grid.Row="2" Grid.Column="0"/>
+        <Label x:Name="labelFebruary" Content="Февраль" Grid.Row="3" Grid.Column="0"/>
+        <Label x:Name="labelMarch" Content="Март" Grid.Row="4" Grid.Column="0"/>
+        <Label x:Name="labelApril" Content="Апрель" Grid.Row="5" Grid.Column="0"/>
+        <Label x:Name="labelMay" Content="Май" Grid.Row="6" Grid.Column="0"/>
+        <Label x:Name="labelJune" Content="Июнь" Grid.Row="7" Grid.Column="0"/>
+        <Label x:Name="labelJuly" Content="Июль" Grid.Row="8" Grid.Column="0"/>
+        <Label x:Name="labelAugust" Content="Август" Grid.Row="9" Grid.Column="0"/>
+        <Label x:Name="labelSeptember" Content="Сентябрь" Grid.Row="10" Grid.Column="0"/>
+        <Label x:Name="labelOctober" Content="Октябрь" Grid.Row="11" Grid.Column="0"/>
+        <Label x:Name="labelNovember" Content="Ноябрь" Grid.Row="12" Grid.Column="0"/>
+        <Label x:Name="labelDecember" Content="Декабрь" Grid.Row="13" Grid.Column="0"/>
         <!--Кнопки-->
-        <Button x:Name="buttonlJanuary" Grid.Row="1" Grid.Column="3" Click="buttonlJanuary_Click"/>
-        <Button x:Name="buttonFebruary" Grid.Row="2" Grid.Column="3" Click="buttonFebruary_Click"/>
-        <Button x:Name="buttonMarch" Grid.Row="3" Grid.Column="3" Click="buttonMarch_Click"/>
-        <Button x:Name="buttonApril" Grid.Row="4" Grid.Column="3" Click="buttonApril_Click"/>
-        <Button x:Name="buttonMay" Grid.Row="5" Grid.Column="3" Click="buttonMay_Click"/>
-        <Button x:Name="buttonJune" Grid.Row="6" Grid.Column="3" Click="buttonJune_Click"/>
-        <Button x:Name="buttonJuly" Grid.Row="7" Grid.Column="3" Click="buttonJuly_Click"/>
-        <Button x:Name="buttonAugust" Grid.Row="8" Grid.Column="3" Click="buttonAugust_Click"/>
-        <Button x:Name="buttonSeptember" Grid.Row="9" Grid.Column="3" Click="buttonSeptember_Click"/>
-        <Button x:Name="buttonOctober" Grid.Row="10" Grid.Column="3" Click="buttonOctober_Click"/>
-        <Button x:Name="buttonNovember" Grid.Row="11" Grid.Column="3" Click="buttonNovember_Click"/>
-        <Button x:Name="buttonDecember" Grid.Row="12" Grid.Column="3" Click="buttonDecember_Click"/>
+        <Button x:Name="buttonlJanuary" Grid.Row="2" Grid.Column="3" Click="buttonJanuary_Click"/>
+        <Button x:Name="buttonFebruary" Grid.Row="3" Grid.Column="3" Click="buttonFebruary_Click"/>
+        <Button x:Name="buttonMarch" Grid.Row="4" Grid.Column="3" Click="buttonMarch_Click"/>
+        <Button x:Name="buttonApril" Grid.Row="5" Grid.Column="3" Click="buttonApril_Click"/>
+        <Button x:Name="buttonMay" Grid.Row="6" Grid.Column="3" Click="buttonMay_Click"/>
+        <Button x:Name="buttonJune" Grid.Row="7" Grid.Column="3" Click="buttonJune_Click"/>
+        <Button x:Name="buttonJuly" Grid.Row="8" Grid.Column="3" Click="buttonJuly_Click"/>
+        <Button x:Name="buttonAugust" Grid.Row="9" Grid.Column="3" Click="buttonAugust_Click"/>
+        <Button x:Name="buttonSeptember" Grid.Row="10" Grid.Column="3" Click="buttonSeptember_Click"/>
+        <Button x:Name="buttonOctober" Grid.Row="11" Grid.Column="3" Click="buttonOctober_Click"/>
+        <Button x:Name="buttonNovember" Grid.Row="12" Grid.Column="3" Click="buttonNovember_Click"/>
+        <Button x:Name="buttonDecember" Grid.Row="13" Grid.Column="3" Click="buttonDecember_Click"/>
         <!--Общая сумма-->
-        <Label x:Name="labelSum" Grid.Row="13" Grid.Column="2" Grid.ColumnSpan="4" Background="#9B6AD6" Foreground="White"
-               Content="Общая сумма"/>
+        <Label x:Name="labelSum" Grid.Row="14" Grid.Column="2" Grid.ColumnSpan="4" Background="#9B6AD6" 
+               Foreground="White" Content="Общая сумма"/>
         <!--Кнопка Итого-->
-        <Button x:Name="buttonTotal" Grid.Row="13" Content="Итого:" Grid.ColumnSpan="2"
+        <Button x:Name="buttonTotal" Grid.Row="14" Content="Итого:" Grid.ColumnSpan="2"
                 Background="#66A1D2" Foreground="White" Click="buttonTotal_Click"/>
-        <!--Поля для заполнения-->
-        <TextBox x:Name="textBoxNightJanuary" Grid.Row="1" Grid.Column="1"/>
-        <TextBox x:Name="textBoxNightFebruary" Grid.Row="2" Grid.Column="1"/>
-        <TextBox x:Name="textBoxNightMarch" Grid.Row="3" Grid.Column="1"/>
-        <TextBox x:Name="textBoxNightApril" Grid.Row="4" Grid.Column="1"/>
-        <TextBox x:Name="textBoxNightMay" Grid.Row="5" Grid.Column="1"/>
-        <TextBox x:Name="textBoxNightJune" Grid.Row="6" Grid.Column="1"/>
-        <TextBox x:Name="textBoxNightJuly" Grid.Row="7" Grid.Column="1"/>
-        <TextBox x:Name="textBoxNightAugust" Grid.Row="8" Grid.Column="1"/>
-        <TextBox x:Name="textBoxNightSeptember" Grid.Row="9" Grid.Column="1"/>
-        <TextBox x:Name="textBoxNightOctober" Grid.Row="10" Grid.Column="1"/>
-        <TextBox x:Name="textBoxNightNovember" Grid.Row="11" Grid.Column="1"/>
-        <TextBox x:Name="textBoxNightDecember" Grid.Row="12" Grid.Column="1"/>
+        <!--Поля для заполнения данных сётчика-->
+        <TextBox x:Name="textBoxNightJanuary" Grid.Row="2" Grid.Column="1"/>
+        <TextBox x:Name="textBoxNightFebruary" Grid.Row="3" Grid.Column="1"/>
+        <TextBox x:Name="textBoxNightMarch" Grid.Row="4" Grid.Column="1"/>
+        <TextBox x:Name="textBoxNightApril" Grid.Row="5" Grid.Column="1"/>
+        <TextBox x:Name="textBoxNightMay" Grid.Row="6" Grid.Column="1"/>
+        <TextBox x:Name="textBoxNightJune" Grid.Row="7" Grid.Column="1"/>
+        <TextBox x:Name="textBoxNightJuly" Grid.Row="8" Grid.Column="1"/>
+        <TextBox x:Name="textBoxNightAugust" Grid.Row="9" Grid.Column="1"/>
+        <TextBox x:Name="textBoxNightSeptember" Grid.Row="10" Grid.Column="1"/>
+        <TextBox x:Name="textBoxNightOctober" Grid.Row="11" Grid.Column="1"/>
+        <TextBox x:Name="textBoxNightNovember" Grid.Row="12" Grid.Column="1"/>
+        <TextBox x:Name="textBoxNightDecember" Grid.Row="13" Grid.Column="1"/>
         
-        <TextBox x:Name="textBoxDayJanuary" Grid.Row="1" Grid.Column="2"/>
-        <TextBox x:Name="textBoxDayFebruary" Grid.Row="2" Grid.Column="2"/>
-        <TextBox x:Name="textBoxDayMarch" Grid.Row="3" Grid.Column="2"/>
-        <TextBox x:Name="textBoxDayApril" Grid.Row="4" Grid.Column="2"/>
-        <TextBox x:Name="textBoxDayMay" Grid.Row="5" Grid.Column="2"/>
-        <TextBox x:Name="textBoxDayJune" Grid.Row="6" Grid.Column="2"/>
-        <TextBox x:Name="textBoxDayJuly" Grid.Row="7" Grid.Column="2"/>
-        <TextBox x:Name="textBoxDayAugust" Grid.Row="8" Grid.Column="2"/>
-        <TextBox x:Name="textBoxDaySeptember" Grid.Row="9" Grid.Column="2"/>
-        <TextBox x:Name="textBoxDayOctober" Grid.Row="10" Grid.Column="2"/>
-        <TextBox x:Name="textBoxDayNovember" Grid.Row="11" Grid.Column="2"/>
-        <TextBox x:Name="textBoxDayDecember" Grid.Row="12" Grid.Column="2"/>
-        
+        <TextBox x:Name="textBoxDayJanuary" Grid.Row="2" Grid.Column="2"/>
+        <TextBox x:Name="textBoxDayFebruary" Grid.Row="3" Grid.Column="2"/>
+        <TextBox x:Name="textBoxDayMarch" Grid.Row="4" Grid.Column="2"/>
+        <TextBox x:Name="textBoxDayApril" Grid.Row="5" Grid.Column="2"/>
+        <TextBox x:Name="textBoxDayMay" Grid.Row="6" Grid.Column="2"/>
+        <TextBox x:Name="textBoxDayJune" Grid.Row="7" Grid.Column="2"/>
+        <TextBox x:Name="textBoxDayJuly" Grid.Row="8" Grid.Column="2"/>
+        <TextBox x:Name="textBoxDayAugust" Grid.Row="9" Grid.Column="2"/>
+        <TextBox x:Name="textBoxDaySeptember" Grid.Row="10" Grid.Column="2"/>
+        <TextBox x:Name="textBoxDayOctober" Grid.Row="11" Grid.Column="2"/>
+        <TextBox x:Name="textBoxDayNovember" Grid.Row="12" Grid.Column="2"/>
+        <TextBox x:Name="textBoxDayDecember" Grid.Row="13" Grid.Column="2"/>
+        <!--Поля для ввода тарифа-->
+        <TextBox x:Name="textBoxNightPrice" Grid.Row="1" Grid.Column="1" 
+                 Style="{StaticResource textBoxDayPrice}"/>
+        <TextBox x:Name="textBoxDayPrice" Grid.Row="1" Grid.Column="2"
+                 Style="{StaticResource textBoxDayPrice}"/>
+        <!--Средняя стоимость тарифа-->
+        <Button x:Name="buttonMiddlePrice" Grid.Row="1" Grid.Column="3"
+                Content="Узнать среднюю цену" Background="#B5B5B5"  Click="buttonMiddlePrice_Click"/>
     </Grid>
 </Window>

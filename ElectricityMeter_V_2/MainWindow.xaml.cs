@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace ElectricityMeter_V_2
 {
@@ -28,24 +29,34 @@ namespace ElectricityMeter_V_2
         }
         private void TextBox_TextInput(object sender, TextCompositionEventArgs e)
         {
-            if (!Char.IsDigit(e.Text, 0))
+            Regex regex = new Regex("[^0-9\\,]+");
+            if (e.Handled = regex.IsMatch(e.Text))
             {
-                e.Handled = true;
-                MessageBox.Show("Неверный ввод (толко целые числа)!");
+                MessageBox.Show("\t         НЕКОРРЕКТНЫЙ ВВОД:\nтолко целые или вещественные числа (через запятую)!");
             }
         }
-        private void searchSum(TextBox _one, TextBox _two, Button _sum)
+        private void searchSum(TextBox _night, TextBox _day, Button _sum)
         {
-            if (_one.Text != null && _two.Text != null)
+            double _tmp;
+            if (textBoxNightPrice.Text == "" | textBoxDayPrice.Text == "")
             {
-                _sum.Content = (Convert.ToInt32(_one.Text) * 2.86) + (Convert.ToInt32(_two.Text) * 7.36);
+                if (_night.Text == "" | _day.Text == "")
+                {
+                    MessageBox.Show("Не хватает данных!");
+                }
+                else
+                {
+                    _tmp = (Convert.ToDouble(_night.Text) + (Convert.ToDouble(_day.Text))) * 5.15;
+                    _sum.Content = _tmp.ToString("0.00");
+                }
             }
             else
             {
-                MessageBox.Show("Не хватает данных!");
+                _tmp = (Convert.ToDouble(_night.Text) * Convert.ToDouble(textBoxNightPrice.Text)) + (Convert.ToInt32(_day.Text) * Convert.ToDouble(textBoxDayPrice.Text));
+                _sum.Content = _tmp.ToString("0.00");
             }
         }
-        private void buttonlJanuary_Click(object sender, RoutedEventArgs e)
+        private void buttonJanuary_Click(object sender, RoutedEventArgs e)
         {
             searchSum(textBoxNightJanuary, textBoxDayJanuary, buttonlJanuary);
             buttonList.Add(buttonlJanuary);
@@ -117,6 +128,13 @@ namespace ElectricityMeter_V_2
 
         private void buttonTotal_Click(object sender, RoutedEventArgs e)
         {
+            if (textBoxNightPrice.Text == "" | textBoxDayPrice.Text == "")
+            {
+                MessageBox.Show("Если в строке \"ТАРИФ\" не введёно " +
+                                "\nоба коэффицента, итоговая сумма " +
+                                "\nбудет посчитана по среднему значению." +
+                                "\nСредний тариф = 5,15 руб за кВт.ч");
+            }
             double sum = 0;
             for (int i = 0; i < buttonList.Count; i++)
             {
@@ -126,6 +144,19 @@ namespace ElectricityMeter_V_2
                 }
             }
             labelSum.Content = sum.ToString();
+        }
+        private void buttonMiddlePrice_Click(object sender, RoutedEventArgs e)
+        {
+            
+            if (textBoxNightPrice.Text == "" | textBoxDayPrice.Text == "")
+            {
+                MessageBox.Show("Не хватает данных!");
+            }
+            else
+            {
+                buttonMiddlePrice.Content = ((Convert.ToDouble(textBoxNightPrice.Text) + Convert.ToDouble(textBoxDayPrice.Text)) / 2).ToString();
+            }
+
         }
     }
 }
